@@ -11,8 +11,8 @@
       "RelativeMoniker": "D:0:0:{F73CFC52-901F-493F-8987-C430F3406B1C}|LandLoaderWPF\\LandLoaderWPF.csproj|solutionrelative:landloaderwpf\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F73CFC52-901F-493F-8987-C430F3406B1C}|LandLoaderWPF\\LandLoaderWPF.csproj|C:\\Users\\draxx\\Desktop\\Visual Projects\\LandLoaderWPF\\landloaderwpf\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F73CFC52-901F-493F-8987-C430F3406B1C}|LandLoaderWPF\\LandLoaderWPF.csproj|solutionrelative:landloaderwpf\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{F73CFC52-901F-493F-8987-C430F3406B1C}|LandLoaderWPF\\LandLoaderWPF.csproj|C:\\Users\\draxx\\Desktop\\Visual Projects\\LandLoaderWPF\\landloaderwpf\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{F73CFC52-901F-493F-8987-C430F3406B1C}|LandLoaderWPF\\LandLoaderWPF.csproj|solutionrelative:landloaderwpf\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -35,13 +35,26 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Users\\draxx\\Desktop\\Visual Projects\\LandLoaderWPF\\LandLoaderWPF\\App.xaml",
-              "RelativeDocumentMoniker": "LandLoaderWPF\\App.xaml",
-              "ToolTip": "C:\\Users\\draxx\\Desktop\\Visual Projects\\LandLoaderWPF\\LandLoaderWPF\\App.xaml",
-              "RelativeToolTip": "LandLoaderWPF\\App.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2023-08-01T00:47:37.012Z",
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\draxx\\Desktop\\Visual Projects\\LandLoaderWPF\\LandLoaderWPF\\App.config",
+              "RelativeDocumentMoniker": "LandLoaderWPF\\App.config",
+              "ToolTip": "C:\\Users\\draxx\\Desktop\\Visual Projects\\LandLoaderWPF\\LandLoaderWPF\\App.config",
+              "RelativeToolTip": "LandLoaderWPF\\App.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-11-15T06:13:58.956Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\draxx\\Desktop\\Visual Projects\\LandLoaderWPF\\LandLoaderWPF\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "LandLoaderWPF\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\draxx\\Desktop\\Visual Projects\\LandLoaderWPF\\LandLoaderWPF\\MainWindow.xaml.cs",
+              "RelativeToolTip": "LandLoaderWPF\\MainWindow.xaml.cs",
+              "ViewState": "AQIAAJ4AAAAAAAAAAAASwK0AAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-15T00:57:49.813Z",
               "EditorCaption": ""
             },
             {
@@ -53,21 +66,7 @@
               "ToolTip": "C:\\Users\\draxx\\Desktop\\Visual Projects\\LandLoaderWPF\\LandLoaderWPF\\MainWindow.xaml",
               "RelativeToolTip": "LandLoaderWPF\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2023-08-01T00:38:52.114Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\draxx\\Desktop\\Visual Projects\\LandLoaderWPF\\LandLoaderWPF\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "LandLoaderWPF\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\draxx\\Desktop\\Visual Projects\\LandLoaderWPF\\LandLoaderWPF\\MainWindow.xaml.cs",
-              "RelativeToolTip": "LandLoaderWPF\\MainWindow.xaml.cs",
-              "ViewState": "AQIAAIUAAAAAAAAAAAAAAJYAAAA1AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-08-01T00:38:51.621Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T00:57:43.898Z"
             }
           ]
         }

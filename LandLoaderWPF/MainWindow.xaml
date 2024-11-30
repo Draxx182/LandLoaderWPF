@@ -6,16 +6,16 @@
         xmlns:local="clr-namespace:LandLoaderWPF"
         mc:Ignorable="d"
         Title="LandLoader" BorderThickness="1,1,1,1" Foreground="#FFFDFDFD" WindowStyle="SingleBorderWindow"
-        Height="Auto" Width="Auto" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+        Height="680" Width="Auto" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
     <Window.Background>
         <SolidColorBrush Color="#FF151515"/>
     </Window.Background>
-    <Grid Height="630" Width="425">
+    <Grid Width="425" Margin="0,11,0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="7*"/>
             <ColumnDefinition Width="18*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Margin="5,0,5,5" Grid.ColumnSpan="2">
+        <StackPanel Margin="5,0,5,25" Grid.ColumnSpan="2">
             <StackPanel.Background>
                 <SolidColorBrush Color="#FF333333"/>
             </StackPanel.Background>
@@ -30,10 +30,10 @@
 
             <Grid HorizontalAlignment="Stretch" Height="605">
                 <Border>
-                    <Rectangle Margin="0,534,0,0" Fill="#FF252525"/>
+                    <Rectangle Margin="0,534,0,-20" Fill="#FF252525"/>
                 </Border>
 
-                <TextBox x:Name="MotionName" HorizontalAlignment="Center" Margin="0,567,0,0" TextWrapping="Wrap" Text="None" VerticalAlignment="Top" Width="396" FontFamily="Arial" FontWeight="Bold" Height="28" VerticalScrollBarVisibility="Hidden" IsReadOnly="True" Background="#FFC7C4C4" FontSize="15"/>
+                <TextBox x:Name="MotionName" HorizontalAlignment="Center" Margin="0,567,0,0" TextWrapping="Wrap" Text="None" VerticalAlignment="Top" Width="396" FontFamily="Arial" FontWeight="Bold" Height="38" VerticalScrollBarVisibility="Hidden" IsReadOnly="True" Background="#FFC7C4C4" FontSize="15"/>
 
                 <DataGrid x:Name="JsonList" Margin="10,10,225,84" FontFamily="Arial" Background="#FF6D6D6D">
                     <DataGrid.Columns>
@@ -51,10 +51,10 @@
                 <Label x:Name="PropertyLabel" Content="Property.bin:" HorizontalAlignment="Left" Margin="258,17,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" FontFamily="Arial"/>
                 <Label x:Name="PropertyCheckLabel" Content="Not Extracted" HorizontalAlignment="Left" Margin="208,37,0,0" VerticalAlignment="Top" Foreground="#FFB91313" FontSize="15" FontWeight="Bold" Width="194" FlowDirection="LeftToRight" HorizontalContentAlignment="Center" Height="31" FontFamily="Arial"/>
 
-                <Button HorizontalAlignment="Left" Margin="233,80,0,0" VerticalAlignment="Top" Height="50" Width="50" Click="ExtractButton_Click">
+                <Button HorizontalAlignment="Left" Margin="233,80,0,0" VerticalAlignment="Top" Height="50" Width="50" Click="ExtractButton_Click" ToolTip="Extract property.bin">
                     <Image x:Name="ExtractButton" Source="Resources\extract.png"></Image>
                 </Button>
-                <Button HorizontalAlignment="Left" Margin="320,80,0,0" VerticalAlignment="Top" Height="50" Width="50" Click="RepackButton_Click">
+                <Button HorizontalAlignment="Left" Margin="320,80,0,0" VerticalAlignment="Top" Height="50" Width="50" Click="RepackButton_Click" ToolTip="Repack property.bin">
                     <Image x:Name="RepackButton" Source="Resources\repack.png"></Image>
                 </Button>
             </Grid>

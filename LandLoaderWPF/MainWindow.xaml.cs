@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Configuration;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +18,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using MotionLibrary;
+using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace LandLoaderWPF
 {
@@ -33,7 +37,7 @@ namespace LandLoaderWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        // Variables
         private CommonOpenFileDialog folderDialog = new CommonOpenFileDialog();
         private PropertyBinLabel propertyChecker = new PropertyBinLabel();
 
@@ -77,8 +81,8 @@ namespace LandLoaderWPF
         private void CheckForProperty(string path)
         {
             DialogPath = path;
-            PropertyName = System.IO.Path.Combine(DialogPath, "property.bin");
-            FolderName = System.IO.Path.Combine(DialogPath, "Extracted Property.bin");
+            PropertyName = System.IO.Path.Combine(DialogPath, ConfigurationManager.AppSettings.Get("PropertyBinName"));
+            FolderName = System.IO.Path.Combine(DialogPath, ConfigurationManager.AppSettings.Get("PropertyBinFolder"));
 
             // If the extracted property.bin folder exists:
             if (Directory.Exists(FolderName))
@@ -159,8 +163,23 @@ namespace LandLoaderWPF
             propertyChecker = PropertyBinLabel.Extracting;
             SetForProperty();
 
+            // Attempts to read the property.bin and stores the moves read.
             OldEngineFormat propertyBin = OldEngineFormat.Read(PropertyName);
+            List<OEAnimEntry> movesRead = propertyBin.Moves;
+                
             Directory.CreateDirectory(FolderName);
+            string movesFolder = System.IO.Path.Combine(FolderName, ConfigurationManager.AppSettings.Get("MovesFolder"));
+            string actionFolder = System.IO.Path.Combine(FolderName, ConfigurationManager.AppSettings.Get("ActionSetFolder"));
+            //string fileInformation = System.IO.Path.Combine(FolderName, ConfigurationManager.AppSettings.Get("FileInformation"));
+            Directory.CreateDirectory(movesFolder);
+            Directory.CreateDirectory(actionFolder);
+
+            string testName = movesRead[5309].Name;
+            //string testSerialization = SerializeOEAnimEntry(movesRead[5309]);
+            string testPath = ConcatFileName(movesFolder, testName + ".json");
+            WriteToJsonFile(testPath, movesRead[5309]);
+
+            //Directory.CreateDirectory(fileInformation);
             if (Directory.Exists(FolderName))
             {
                 propertyChecker = PropertyBinLabel.Extracted;
@@ -174,6 +193,34 @@ namespace LandLoaderWPF
                 propertyChecker = PropertyBinLabel.Exists;
                 SetForProperty();
                 return;
+            }
+        }
+
+        /// <summary>
+        /// Returns a concatenated file path and a file name.
+        /// </summary>
+        private string ConcatFileName(string path, string name){
+            return System.IO.Path.Combine(path, name);
+        }
+
+        /// <summary>
+        /// Write a JSON file using a given object.
+        /// </summary>
+        /// <param name="filePath">File path to write to.</param>
+        /// <param name="objectToSerialize">Object to serialize.</param>
+        private void WriteToJsonFile(string filePath, params object[] objectsToSerialize)
+        {
+            Newtonsoft.Json.JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
+            // Creates the stream and the JsonWriter to serialize a new file.
+            using (StreamWriter wr = new StreamWriter(filePath))
+            {
+                using (JsonWriter writer = new JsonTextWriter(wr))
+                {
+                    writer.Formatting = Formatting.Indented;
+                    foreach (Object obj in objectsToSerialize) { 
+                        serializer.Serialize(writer, obj);
+                    }
+                }
             }
         }
 
