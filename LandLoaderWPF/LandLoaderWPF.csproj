@@ -13,11 +13,14 @@
     <OutputPath>bin\ARM64\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Resource Include="Resources\extract.png" />
-    <Resource Include="Resources\repack.png" />
+    <Compile Remove="Dependencies\**" />
+    <EmbeddedResource Remove="Dependencies\**" />
+    <None Remove="Dependencies\**" />
+    <Page Remove="Dependencies\**" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Dependencies\" />
+    <Resource Include="Resources\extract.png" />
+    <Resource Include="Resources\repack.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
@@ -26,6 +29,9 @@
     <PackageReference Include="WindowsAPICodePack-Core" Version="1.1.1" />
     <PackageReference Include="WindowsAPICodePack-Shell" Version="1.1.1" />
     <PackageReference Include="Yarhl" Version="4.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MotionLibrary\MotionLib\MotionLibrary.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MotionLibrary">

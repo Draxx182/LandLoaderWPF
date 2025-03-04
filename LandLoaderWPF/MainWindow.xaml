@@ -6,59 +6,91 @@
         xmlns:local="clr-namespace:LandLoaderWPF"
         mc:Ignorable="d"
         Title="LandLoader" BorderThickness="1,1,1,1" Foreground="#FFFDFDFD" WindowStyle="SingleBorderWindow"
-        Height="680" Width="Auto" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+        Height="Auto" Width="Auto" SizeToContent="WidthAndHeight" MinWidth="450" MinHeight="675">
     <Window.Background>
         <SolidColorBrush Color="#FF151515"/>
     </Window.Background>
-    <Grid Width="425" Margin="0,11,0,0">
+    
+    <!--Main Grid. Holds both property explorer and property editor.-->
+    <Grid Width="1200" Margin="0,11,0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="7*"/>
             <ColumnDefinition Width="18*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Margin="5,0,5,25" Grid.ColumnSpan="2">
-            <StackPanel.Background>
+
+        <!--Grid holding elements for property explorer.-->
+        <Grid Margin="5,0,780,5" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+            <Grid.Background>
                 <SolidColorBrush Color="#FF333333"/>
-            </StackPanel.Background>
+            </Grid.Background>
 
-            <Menu Height="20" FontFamily="Arial" FontSize="15" Background="#FF151515">
+            <!--Menu bar on top of DockPanel.-->
+            <DockPanel Margin="0,0,0,624">
+                <Menu x:Name="MenuBar" Height="20" FontFamily="Arial" FontSize="15" Background="#FF151515" DockPanel.Dock="Top">
+                    <!--Menu Item for holding Folder contents.-->
+                    <MenuItem x:Name="MenuFolder" Header="Folder" Height="20" Width="57" FontSize="15" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}">
+                        <MenuItem x:Name="MenuFolderOpen" Header="Open" Background="White" BorderBrush="{x:Null}" Foreground="Black" Click="MenuOpen_Click"/>
+                    </MenuItem>
+                
+                    <!--Menu Item for holding File contents.-->
+                    <MenuItem x:Name="MenuFile" Header="File" Height="20" Width="57" FontSize="15" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}">
+                        <MenuItem x:Name="MenuFileOpen" Header="Open" Background="White" BorderBrush="{x:Null}" Foreground="Black" />
+                    </MenuItem>
+                </Menu>
+            </DockPanel>
 
-                <MenuItem Header="Folder" Height="20" Width="57" FontSize="15" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}">
-                    <MenuItem x:Name="MenuOpen" Header="Open" Background="White" BorderBrush="{x:Null}" Foreground="Black" Click="MenuOpen_Click"/>
-                </MenuItem>
+            <!--Shows all loaded jsons from the property.bin.-->
+            <DataGrid x:Name="JsonList" Margin="10,31,233,122" FontFamily="Arial" Background="#FF6D6D6D">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="#" Foreground="#FFA7A7A7"/>
+                    <DataGridCheckBoxColumn Header="Enabled"/>
+                    <DataGridTextColumn Header="Content"/>
+                </DataGrid.Columns>
+            </DataGrid>
 
-            </Menu>
+            <!--Rectangles for added flair. These are where the buttons and stuff are at.-->
+            <Border BorderBrush="Black" BorderThickness="1">
+                <Grid HorizontalAlignment="Left" Height="511" Margin="197,10,0,0" VerticalAlignment="Top" Width="207">
+                    <Border BorderBrush="Black" BorderThickness="1">
+                        <Grid HorizontalAlignment="Left" Height="137" Margin="0,12,0,0" VerticalAlignment="Top" Width="202.75">
+                            <Grid.Background>
+                                <SolidColorBrush Color="#FF232323"/>
+                            </Grid.Background>
+                            <!--Textbox and label displaying the current folder selected.-->
+                            <Label Content="Current Motion Folder:" HorizontalAlignment="Left" Margin="112,527,0,0" VerticalAlignment="Top" Width="162" FontSize="15" FontFamily="Arial" Foreground="White" Height="30"/>
+                            <TextBox x:Name="MotionName" HorizontalAlignment="Left" Margin="5,555,0,0" TextWrapping="Wrap" Text="None" VerticalAlignment="Top" Width="400" FontFamily="Arial" FontWeight="Bold" Height="60" VerticalScrollBarVisibility="Hidden" IsReadOnly="True" Background="#FFC7C4C4" FontSize="15"/>
 
-            <Grid HorizontalAlignment="Stretch" Height="605">
-                <Border>
-                    <Rectangle Margin="0,534,0,-20" Fill="#FF252525"/>
-                </Border>
 
-                <TextBox x:Name="MotionName" HorizontalAlignment="Center" Margin="0,567,0,0" TextWrapping="Wrap" Text="None" VerticalAlignment="Top" Width="396" FontFamily="Arial" FontWeight="Bold" Height="38" VerticalScrollBarVisibility="Hidden" IsReadOnly="True" Background="#FFC7C4C4" FontSize="15"/>
+                            <!--Labels and buttons which define a property.bin extraction once selected.-->
+                            <Label x:Name="PropertyLabel" Content="Property.bin:" HorizontalAlignment="Left" Margin="258,17,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" FontFamily="Arial"/>
+                            <Label x:Name="PropertyCheckLabel" Content="Not Extracted" HorizontalAlignment="Left" Margin="208,37,0,0" VerticalAlignment="Top" Foreground="#FFB91313" FontSize="15" FontWeight="Bold" Width="194" FlowDirection="LeftToRight" HorizontalContentAlignment="Center" Height="31" FontFamily="Arial"/>
+                            <Button HorizontalAlignment="Left" Margin="233,80,0,0" VerticalAlignment="Top" Height="50" Width="50" Click="ExtractButton_Click" ToolTip="Extract property.bin">
+                                <Image x:Name="ExtractButton" Source="Resources\extract.png"></Image>
+                            </Button>
+                            <Button HorizontalAlignment="Left" Margin="320,80,0,0" VerticalAlignment="Top" Height="50" Width="50" Click="RepackButton_Click" ToolTip="Repack property.bin">
+                                <Image x:Name="RepackButton" Source="Resources\repack.png"></Image>
+                            </Button>
+                        </Grid>
+                    </Border>
 
-                <DataGrid x:Name="JsonList" Margin="10,10,225,84" FontFamily="Arial" Background="#FF6D6D6D">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="#" Foreground="#FFA7A7A7"/>
-                        <DataGridCheckBoxColumn Header="Enabled"/>
-                        <DataGridTextColumn Header="Content"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+                    <!--.-->
+                    <Border BorderBrush="Black" BorderThickness="1">
+                        <Grid HorizontalAlignment="Left" Height="369" Margin="0,150,0,0" VerticalAlignment="Top" Width="202.75">
+                            <Grid.Background>
+                                <SolidColorBrush Color="#FF232323"/>
+                            </Grid.Background>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
 
-                <Rectangle HorizontalAlignment="Left" Height="511" Margin="195,10,0,0" VerticalAlignment="Top" Width="211" Fill="#FF232323" Stroke="Black"/>
-                <Rectangle HorizontalAlignment="Left" Height="139" Margin="200,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="202"/>
-                <Rectangle HorizontalAlignment="Left" Height="371" Margin="200,150,0,0" Stroke="Black" VerticalAlignment="Top" Width="202"/>
+            <!--Grey box which holds text box.-->
+            <Border Margin="0,0,0,0">
+                <Rectangle Margin="0,525,0,0" Fill="#FF252525"/>
+            </Border>
+        </Grid>
 
-                <Label Content="Current Motion Folder:" HorizontalAlignment="Center" Margin="0,537,0,0" VerticalAlignment="Top" Width="163" FontSize="15" FontFamily="Arial" Foreground="White" Height="30"/>
-                <Label x:Name="PropertyLabel" Content="Property.bin:" HorizontalAlignment="Left" Margin="258,17,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" FontFamily="Arial"/>
-                <Label x:Name="PropertyCheckLabel" Content="Not Extracted" HorizontalAlignment="Left" Margin="208,37,0,0" VerticalAlignment="Top" Foreground="#FFB91313" FontSize="15" FontWeight="Bold" Width="194" FlowDirection="LeftToRight" HorizontalContentAlignment="Center" Height="31" FontFamily="Arial"/>
-
-                <Button HorizontalAlignment="Left" Margin="233,80,0,0" VerticalAlignment="Top" Height="50" Width="50" Click="ExtractButton_Click" ToolTip="Extract property.bin">
-                    <Image x:Name="ExtractButton" Source="Resources\extract.png"></Image>
-                </Button>
-                <Button HorizontalAlignment="Left" Margin="320,80,0,0" VerticalAlignment="Top" Height="50" Width="50" Click="RepackButton_Click" ToolTip="Repack property.bin">
-                    <Image x:Name="RepackButton" Source="Resources\repack.png"></Image>
-                </Button>
-            </Grid>
-        </StackPanel>
+        <!--Stack Panel holding elements for property editor.-->
     </Grid>
 </Window>
 

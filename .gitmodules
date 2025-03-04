@@ -1,0 +1,3 @@
+[submodule "MotionLibrary"]
+	path = MotionLibrary
+	url = https://github.com/Draxx182/MotionLibrary
