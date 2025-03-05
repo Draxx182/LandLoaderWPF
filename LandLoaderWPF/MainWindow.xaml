@@ -12,18 +12,18 @@
     </Window.Background>
 
     <!--Main Grid. Holds both property explorer and property editor.-->
-    <Grid Width="1500" Margin="0,0,0,0">
+    <Grid Width="1500" Margin="0,0,0,0" Grid.ColumnSpan="2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
+        
         <!--Grid holding elements for property explorer.-->
-        <Grid x:Name="GridPropertyExplorer" Margin="5,0,0,5" HorizontalAlignment="Left" Grid.RowSpan="3">
+        <Grid x:Name="GridPropertyExplorer" Margin="5,0,5,5" HorizontalAlignment="Left" Grid.RowSpan="3" DockPanel.Dock="Left" Grid.Column="0">
             <Grid.Background>
                 <SolidColorBrush Color="#FF333333"/>
             </Grid.Background>
-            <!--Helped DockPanel from sliding from Grid..-->
+            <!--Helped DockPanel from sliding from Grid.-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -35,11 +35,6 @@
                     <!--Menu Item for holding Folder contents.-->
                     <MenuItem x:Name="MenuFolder" Header="Folder" Height="20" Width="57" FontSize="15" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}">
                         <MenuItem x:Name="MenuFolderOpen" Header="Open" Background="White" BorderBrush="{x:Null}" Foreground="Black" Click="MenuOpen_Click"/>
-                    </MenuItem>
-
-                    <!--Menu Item for holding File contents.-->
-                    <MenuItem x:Name="MenuFile" Header="File" Height="20" Width="57" FontSize="15" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}">
-                        <MenuItem x:Name="MenuFileOpen" Header="Open" Background="White" BorderBrush="{x:Null}" Foreground="Black" />
                     </MenuItem>
                 </Menu>
             </DockPanel>
@@ -87,7 +82,7 @@
             </Grid>
 
             <!--Grey box which holds text box.-->
-            <Grid Margin="0,528,0,0" Grid.Row="1">
+            <Grid Margin="0,528,0,0" Grid.Row="2">
                 <Grid.Background>
                     <SolidColorBrush Color="#FF252525"/>
                 </Grid.Background>
@@ -98,6 +93,61 @@
         </Grid>
 
         <!--Stack Panel holding elements for property editor.-->
+        <Grid DockPanel.Dock="Right" Margin="5,0,5,5" Grid.RowSpan="2" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.Resources>
+                <!--https://stackoverflow.com/questions/2518107/wpf-tabcontrol-styling-->
+                <Style TargetType="{x:Type TabItem}">
+                    <Setter Property="Background" Value="#FF232323" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="FontSize" Value="15"/>
+
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type TabItem}">
+
+                                <Border x:Name="PART_Border" Background="{TemplateBinding Background}" BorderThickness="1" BorderBrush="LightGray" Margin="2">
+                                    <ContentPresenter ContentSource="Header" Margin="2" />
+                                </Border>
+
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="PART_Border" Property="BorderBrush" Value="Black" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+                <Style TargetType="{x:Type TabControl}">
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="Background" Value="#FF232323" />
+                </Style>
+            </Grid.Resources>
+
+            <!--Menu bar on top of DockPanel.-->
+            <DockPanel Grid.Row="0" Margin="0,0,0,0">
+                <Menu x:Name="SadBar" Height="20" FontFamily="Arial" FontSize="15" Background="#FF151515" DockPanel.Dock = "Top">
+                    <!--Menu Item for holding Folder contents.-->
+                    <MenuItem x:Name="wa" Header="File" Height="20" Width="57" FontSize="15" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}">
+                        <MenuItem x:Name="MenuFowdlderOpen" Header="Open" Background="White" BorderBrush="{x:Null}" Foreground="Black" Click="MenuOpen_Click"/>
+                    </MenuItem>
+                </Menu>
+            </DockPanel>
+
+            <TabControl x:Name="FileTabControl" Grid.Row="1">
+                <TabItem Header="TabItem">
+                    <Grid Background="#FF333333"></Grid>
+                </TabItem>
+                <TabItem Header="TabItem">
+                    <Grid Background="#FF333333"></Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
     </Grid>
 </Window>
 
