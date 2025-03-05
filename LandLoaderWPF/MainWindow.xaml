@@ -10,28 +10,37 @@
     <Window.Background>
         <SolidColorBrush Color="#FF151515"/>
     </Window.Background>
-    
+
     <!--Main Grid. Holds both property explorer and property editor.-->
-    <Grid Width="1200" Margin="0,11,0,0">
+    <Grid Width="1500" Margin="0,0,0,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="7*"/>
-            <ColumnDefinition Width="18*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <!--Grid holding elements for property explorer.-->
-        <Grid Margin="5,0,780,5" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+        <Grid x:Name="GridPropertyExplorer" Margin="5,0,0,5" HorizontalAlignment="Left" Grid.ColumnSpan="2">
             <Grid.Background>
                 <SolidColorBrush Color="#FF333333"/>
             </Grid.Background>
+            <!--Helped DockPanel from sliding from Grid..-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
             <!--Menu bar on top of DockPanel.-->
-            <DockPanel Margin="0,0,0,624">
-                <Menu x:Name="MenuBar" Height="20" FontFamily="Arial" FontSize="15" Background="#FF151515" DockPanel.Dock="Top">
+            <DockPanel Grid.Row="0" Margin="0,0,0,632">
+                <Menu x:Name="MenuBar" Height="20" FontFamily="Arial" FontSize="15" Background="#FF151515" DockPanel.Dock = "Top">
                     <!--Menu Item for holding Folder contents.-->
                     <MenuItem x:Name="MenuFolder" Header="Folder" Height="20" Width="57" FontSize="15" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}">
                         <MenuItem x:Name="MenuFolderOpen" Header="Open" Background="White" BorderBrush="{x:Null}" Foreground="Black" Click="MenuOpen_Click"/>
                     </MenuItem>
-                
+
                     <!--Menu Item for holding File contents.-->
                     <MenuItem x:Name="MenuFile" Header="File" Height="20" Width="57" FontSize="15" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}">
                         <MenuItem x:Name="MenuFileOpen" Header="Open" Background="White" BorderBrush="{x:Null}" Foreground="Black" />
@@ -40,7 +49,7 @@
             </DockPanel>
 
             <!--Shows all loaded jsons from the property.bin.-->
-            <DataGrid x:Name="JsonList" Margin="10,31,233,122" FontFamily="Arial" Background="#FF6D6D6D">
+            <DataGrid x:Name="JsonList" Margin="10,35,236,99" FontFamily="Arial" Background="#FF6D6D6D">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="#" Foreground="#FFA7A7A7"/>
                     <DataGridCheckBoxColumn Header="Enabled"/>
@@ -49,45 +58,46 @@
             </DataGrid>
 
             <!--Rectangles for added flair. These are where the buttons and stuff are at.-->
-            <Border BorderBrush="Black" BorderThickness="1">
-                <Grid HorizontalAlignment="Left" Height="511" Margin="197,10,0,0" VerticalAlignment="Top" Width="207">
-                    <Border BorderBrush="Black" BorderThickness="1">
-                        <Grid HorizontalAlignment="Left" Height="137" Margin="0,12,0,0" VerticalAlignment="Top" Width="202.75">
-                            <Grid.Background>
-                                <SolidColorBrush Color="#FF232323"/>
-                            </Grid.Background>
-                            <!--Textbox and label displaying the current folder selected.-->
-                            <Label Content="Current Motion Folder:" HorizontalAlignment="Left" Margin="112,527,0,0" VerticalAlignment="Top" Width="162" FontSize="15" FontFamily="Arial" Foreground="White" Height="30"/>
-                            <TextBox x:Name="MotionName" HorizontalAlignment="Left" Margin="5,555,0,0" TextWrapping="Wrap" Text="None" VerticalAlignment="Top" Width="400" FontFamily="Arial" FontWeight="Bold" Height="60" VerticalScrollBarVisibility="Hidden" IsReadOnly="True" Background="#FFC7C4C4" FontSize="15"/>
+            <Grid HorizontalAlignment="Left" Margin="195,35,0,0" VerticalAlignment="Top">
+                <Grid.Background>
+                    <SolidColorBrush Color="#FF232323"/>
+                </Grid.Background>
+                <Border BorderBrush="Black" BorderThickness="1"/>
 
+                <Grid HorizontalAlignment="Left" Height="137" Margin="1.5,1.5,0,0" VerticalAlignment="Top" Width="199">
+                    <Grid.Background>
+                        <SolidColorBrush Color="#FF232323"/>
+                    </Grid.Background>
+                    <Border BorderBrush="Black" BorderThickness="1"/>
 
-                            <!--Labels and buttons which define a property.bin extraction once selected.-->
-                            <Label x:Name="PropertyLabel" Content="Property.bin:" HorizontalAlignment="Left" Margin="258,17,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" FontFamily="Arial"/>
-                            <Label x:Name="PropertyCheckLabel" Content="Not Extracted" HorizontalAlignment="Left" Margin="208,37,0,0" VerticalAlignment="Top" Foreground="#FFB91313" FontSize="15" FontWeight="Bold" Width="194" FlowDirection="LeftToRight" HorizontalContentAlignment="Center" Height="31" FontFamily="Arial"/>
-                            <Button HorizontalAlignment="Left" Margin="233,80,0,0" VerticalAlignment="Top" Height="50" Width="50" Click="ExtractButton_Click" ToolTip="Extract property.bin">
-                                <Image x:Name="ExtractButton" Source="Resources\extract.png"></Image>
-                            </Button>
-                            <Button HorizontalAlignment="Left" Margin="320,80,0,0" VerticalAlignment="Top" Height="50" Width="50" Click="RepackButton_Click" ToolTip="Repack property.bin">
-                                <Image x:Name="RepackButton" Source="Resources\repack.png"></Image>
-                            </Button>
-                        </Grid>
-                    </Border>
-
-                    <!--.-->
-                    <Border BorderBrush="Black" BorderThickness="1">
-                        <Grid HorizontalAlignment="Left" Height="369" Margin="0,150,0,0" VerticalAlignment="Top" Width="202.75">
-                            <Grid.Background>
-                                <SolidColorBrush Color="#FF232323"/>
-                            </Grid.Background>
-                        </Grid>
-                    </Border>
+                    <!--Labels and buttons which define a property.bin extraction once selected.-->
+                    <Label x:Name="PropertyLabel" Content="Property.bin:" HorizontalAlignment="Left" Margin="258,17,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" FontFamily="Arial"/>
+                    <Label x:Name="PropertyCheckLabel" Content="Not Extracted" HorizontalAlignment="Left" Margin="208,37,0,0" VerticalAlignment="Top" Foreground="#FFB91313" FontSize="15" FontWeight="Bold" Width="194" FlowDirection="LeftToRight" HorizontalContentAlignment="Center" Height="31" FontFamily="Arial"/>
+                    <Button HorizontalAlignment="Left" Margin="233,80,0,0" VerticalAlignment="Top" Height="50" Width="50" Click="ExtractButton_Click" ToolTip="Extract property.bin">
+                        <Image x:Name="ExtractButton" Source="Resources\extract.png"></Image>
+                    </Button>
+                    <Button HorizontalAlignment="Left" Margin="320,80,0,0" VerticalAlignment="Top" Height="50" Width="50" Click="RepackButton_Click" ToolTip="Repack property.bin">
+                        <Image x:Name="RepackButton" Source="Resources\repack.png"></Image>
+                    </Button>
                 </Grid>
-            </Border>
+
+                <!--.-->
+                <Grid HorizontalAlignment="Left" Height="377" Margin="1.5,139.5,0,1.5" VerticalAlignment="Top" Width="199">
+                    <Grid.Background>
+                        <SolidColorBrush Color="#FF232323"/>
+                    </Grid.Background>
+                    <Border BorderBrush="Black" BorderThickness="1"/>
+                </Grid>
+            </Grid>
 
             <!--Grey box which holds text box.-->
             <Border Margin="0,0,0,0">
-                <Rectangle Margin="0,525,0,0" Fill="#FF252525"/>
+                <Rectangle Margin="0,560,0,0" Fill="#FF252525"/>
             </Border>
+
+            <!--Textbox and label displaying the current folder selected.-->
+            <Label Content="Current Motion Folder:" HorizontalAlignment="Left" Margin="112,558,0,0" VerticalAlignment="Top" Width="162" FontSize="15" FontFamily="Arial" Foreground="White" Height="30"/>
+            <TextBox x:Name="MotionName" HorizontalAlignment="Left" Margin="2.5,588,5,0" TextWrapping="Wrap" Text="None" VerticalAlignment="Top" Width="400" FontFamily="Arial" FontWeight="Bold" Height="60" VerticalScrollBarVisibility="Hidden" IsReadOnly="True" Background="#FFC7C4C4" FontSize="15"/>
         </Grid>
 
         <!--Stack Panel holding elements for property editor.-->

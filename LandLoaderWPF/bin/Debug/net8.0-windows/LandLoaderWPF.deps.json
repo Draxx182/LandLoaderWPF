@@ -9,12 +9,13 @@
       "LandLoaderWPF/1.0.0": {
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
+          "MotionLibrary": "1.0.0",
           "Newtonsoft.Json": "13.0.3",
           "System.Data.DataSetExtensions": "4.5.0",
           "WindowsAPICodePack-Core": "1.1.1",
           "WindowsAPICodePack-Shell": "1.1.1",
           "Yarhl": "4.0.0",
-          "MotionLibrary": "1.0.0.0"
+          "MotionLibrary.Reference": "1.0.0.0"
         },
         "runtime": {
           "LandLoaderWPF.dll": {}
@@ -70,7 +71,7 @@
           }
         }
       },
-      "MotionLibrary/1.0.0.0": {
+      "MotionLibrary.Reference/1.0.0.0": {
         "runtime": {
           "MotionLibrary.dll": {
             "assemblyVersion": "1.0.0.0",
@@ -142,7 +143,7 @@
       "path": "yarhl/4.0.0",
       "hashPath": "yarhl.4.0.0.nupkg.sha512"
     },
-    "MotionLibrary/1.0.0.0": {
+    "MotionLibrary.Reference/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
