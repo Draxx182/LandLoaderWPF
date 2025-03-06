@@ -12,12 +12,12 @@
     </Window.Background>
 
     <!--Main Grid. Holds both property explorer and property editor.-->
-    <Grid Width="1500" Margin="0,0,0,0" Grid.ColumnSpan="2">
+    <Grid Grid.ColumnSpan="2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
+
         <!--Grid holding elements for property explorer.-->
         <Grid x:Name="GridPropertyExplorer" Margin="5,0,5,5" HorizontalAlignment="Left" Grid.RowSpan="3" DockPanel.Dock="Left" Grid.Column="0">
             <Grid.Background>
@@ -27,6 +27,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <!--Menu bar on top of DockPanel.-->
@@ -40,7 +41,7 @@
             </DockPanel>
 
             <!--Shows all loaded jsons from the property.bin.-->
-            <DataGrid x:Name="JsonList" Margin="5,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="Arial" Background="#FF6D6D6D" Grid.Row="1" Grid.Column="0" Height="518" Width="180">
+            <DataGrid x:Name="JsonList" Margin="5,5,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Left" FontFamily="Arial" Background="#FF6D6D6D" Grid.Row="1" Grid.Column="0" Width="180">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="#" Foreground="#FFA7A7A7"/>
                     <DataGridCheckBoxColumn Header="Enabled"/>
@@ -49,7 +50,7 @@
             </DataGrid>
 
             <!--Rectangles for added flair. These are where the buttons and stuff are at.-->
-            <Grid Margin="0,5,5,0" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0">
+            <Grid Margin="0,5,5,0" VerticalAlignment="Stretch" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0">
                 <Grid.Background>
                     <SolidColorBrush Color="#FF232323"/>
                 </Grid.Background>
@@ -73,22 +74,22 @@
                 </Grid>
 
                 <!--.-->
-                <Grid HorizontalAlignment="Left" Height="377" Width="199" Margin="1.5,139.5,0,1.5" VerticalAlignment="Top">
+                <Grid HorizontalAlignment="Left" VerticalAlignment="Stretch" MinHeight="375" Width="199" Margin="1.5,139.5,0,1.5">
                     <Grid.Background>
                         <SolidColorBrush Color="#FF232323"/>
                     </Grid.Background>
-                    <Border BorderBrush="Black" BorderThickness="1"/>
+                    <Border BorderBrush="Black" BorderThickness="1" VerticalAlignment="Stretch"/>
                 </Grid>
             </Grid>
 
             <!--Grey box which holds text box.-->
-            <Grid Margin="0,528,0,0" Grid.Row="2">
+            <Grid Margin="0,5,0,0" Grid.Row="2">
                 <Grid.Background>
                     <SolidColorBrush Color="#FF252525"/>
                 </Grid.Background>
 
                 <Label Content="Current Motion Folder:" HorizontalAlignment="Left" Margin="112,0,0,0" VerticalAlignment="Top" Width="162" FontSize="15" FontFamily="Arial" Foreground="White" Height="30" Grid.Row="2"/>
-                <TextBox x:Name="MotionName" HorizontalAlignment="Left" Margin="2.5,28,5,0" TextWrapping="Wrap" Text="None" VerticalAlignment="Top" Width="400" FontFamily="Arial" FontWeight="Bold" Height="60" VerticalScrollBarVisibility="Hidden" IsReadOnly="True" Background="#FFC7C4C4" FontSize="15" Grid.Row="2"/>
+                <TextBox x:Name="MotionName" HorizontalAlignment="Left" Margin="2.5,28,5,4" TextWrapping="Wrap" Text="None" VerticalAlignment="Top" Width="400" FontFamily="Arial" FontWeight="Bold" Height="60" VerticalScrollBarVisibility="Hidden" IsReadOnly="True" Background="#FFC7C4C4" FontSize="15" Grid.Row="2"/>
             </Grid>
         </Grid>
 
@@ -98,6 +99,9 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
             <Grid.Resources>
                 <!--https://stackoverflow.com/questions/2518107/wpf-tabcontrol-styling-->
                 <Style TargetType="{x:Type TabItem}">
@@ -131,15 +135,15 @@
 
             <!--Menu bar on top of DockPanel.-->
             <DockPanel Grid.Row="0" Margin="0,0,0,0">
-                <Menu x:Name="SadBar" Height="20" FontFamily="Arial" FontSize="15" Background="#FF151515" DockPanel.Dock = "Top">
+                <Menu x:Name="PropertyEditorMenu" Height="20" FontFamily="Arial" FontSize="15" Background="#FF151515" DockPanel.Dock = "Top">
                     <!--Menu Item for holding Folder contents.-->
-                    <MenuItem x:Name="wa" Header="File" Height="20" Width="57" FontSize="15" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}">
-                        <MenuItem x:Name="MenuFowdlderOpen" Header="Open" Background="White" BorderBrush="{x:Null}" Foreground="Black" Click="MenuOpen_Click"/>
+                    <MenuItem x:Name="PropertyEditorMenuFile" Header="File" Height="20" Width="57" FontSize="15" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}">
+                        <MenuItem x:Name="PropertyEditorMenuFileOpen" Header="Open" Background="White" BorderBrush="{x:Null}" Foreground="Black" Click="PropertyEditorMenuFileOpen_Click"/>
                     </MenuItem>
                 </Menu>
             </DockPanel>
 
-            <TabControl x:Name="FileTabControl" Grid.Row="1">
+            <TabControl x:Name="PropertyEditorTabControl" Grid.Row="1" MinWidth="1000" Margin="0,0,2.5,0">
                 <TabItem Header="TabItem">
                     <Grid Background="#FF333333"></Grid>
                 </TabItem>

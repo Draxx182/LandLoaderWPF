@@ -66,14 +66,6 @@
               "target": "Package",
               "version": "[4.5.0, )"
             },
-            "WindowsAPICodePack-Core": {
-              "target": "Package",
-              "version": "[1.1.1, )"
-            },
-            "WindowsAPICodePack-Shell": {
-              "target": "Package",
-              "version": "[1.1.1, )"
-            },
             "Yarhl": {
               "target": "Package",
               "version": "[4.0.0, )"

@@ -5,8 +5,6 @@ C:\Users\draxx\Desktop\Visual Projects\LandLoaderWPF\LandLoaderWPF\bin\Debug\net
 C:\Users\draxx\Desktop\Visual Projects\LandLoaderWPF\LandLoaderWPF\bin\Debug\net8.0-windows\LandLoaderWPF.dll
 C:\Users\draxx\Desktop\Visual Projects\LandLoaderWPF\LandLoaderWPF\bin\Debug\net8.0-windows\LandLoaderWPF.pdb
 C:\Users\draxx\Desktop\Visual Projects\LandLoaderWPF\LandLoaderWPF\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
-C:\Users\draxx\Desktop\Visual Projects\LandLoaderWPF\LandLoaderWPF\bin\Debug\net8.0-windows\Microsoft.WindowsAPICodePack.dll
-C:\Users\draxx\Desktop\Visual Projects\LandLoaderWPF\LandLoaderWPF\bin\Debug\net8.0-windows\Microsoft.WindowsAPICodePack.Shell.dll
 C:\Users\draxx\Desktop\Visual Projects\LandLoaderWPF\LandLoaderWPF\bin\Debug\net8.0-windows\MotionLibrary.dll
 C:\Users\draxx\Desktop\Visual Projects\LandLoaderWPF\LandLoaderWPF\obj\Debug\net8.0-windows\LandLoaderWPF.csproj.AssemblyReference.cache
 C:\Users\draxx\Desktop\Visual Projects\LandLoaderWPF\LandLoaderWPF\obj\Debug\net8.0-windows\MainWindow.g.cs

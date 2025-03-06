@@ -16,7 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Microsoft.WindowsAPICodePack.Dialogs;
+using Microsoft.Win32;
 using MotionLibrary;
 using Newtonsoft.Json;
 using System.Text.Json;
@@ -38,7 +38,7 @@ namespace LandLoaderWPF
     public partial class MainWindow : Window
     {
         // Variables
-        private CommonOpenFileDialog folderDialog = new CommonOpenFileDialog();
+        private OpenFolderDialog folderDialog = new OpenFolderDialog();
         private PropertyBinLabel propertyChecker = new PropertyBinLabel();
 
         public string DialogPath;
@@ -55,6 +55,7 @@ namespace LandLoaderWPF
 
             // Open Folder Dialog - https://stackoverflow.com/questions/7921672/how-to-add-comments-into-a-xaml-file-in-wpf
             folderDialog.Title = "Open Motion Path";
+            /*
             folderDialog.IsFolderPicker = true;
 
             folderDialog.AddToMostRecentlyUsedList = false;
@@ -64,15 +65,15 @@ namespace LandLoaderWPF
             folderDialog.EnsureReadOnly = false;
             folderDialog.EnsureValidNames = true;
             folderDialog.Multiselect = false;
-            folderDialog.ShowPlacesList = true;
+            folderDialog.ShowPlacesList = true; */
         }
 
         private void MenuOpen_Click(object sender, RoutedEventArgs e)
         {
             // Continued from Open Folder Dialog
-            if (folderDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            if (folderDialog.ShowDialog() == true)
             {
-                var folder = folderDialog.FileName;
+                var folder = folderDialog.FolderName;
                 MotionName.Text = folder;
                 CheckForProperty(folder);
             }
@@ -227,6 +228,16 @@ namespace LandLoaderWPF
         private void RepackButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Repacking is unavailable.");
+        }
+
+        private void PropertyEditorMenuFileOpen_Click(object sender, RoutedEventArgs e)
+        {
+            TabItem newTabItem = new TabItem
+            {
+                Header = "Test LONGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG",
+                Name = "Test"
+            };
+            this.PropertyEditorTabControl.Items.Add(newTabItem);
         }
     }
 }
